@@ -4,9 +4,6 @@ import signal
 import functools
 import time
 
-class TimeoutError(Exception):
-    pass
-
 def timeout(seconds=10, error_message=os.strerror(errno.ETIME)):
     def decorator(func):
         def _handle_timeout(signum, frame):
@@ -22,13 +19,11 @@ def timeout(seconds=10, error_message=os.strerror(errno.ETIME)):
             finally:
                 signal.alarm(0)
             return result
-
         return wrapper
-
     return decorator
 
-@timeout(seconds=30)
+@timeout(seconds=3)
 def long_running_function():
-    time.sleep(20)
+    time.sleep(2)
 
 long_running_function()
