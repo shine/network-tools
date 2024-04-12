@@ -39,15 +39,14 @@ def circuit_breaker(history_size: int=5, forget_after: int=3):
             current_time = time.time()
 
             clean_outdated_history(current_time)
-            print('---------')
-            print([item['status'] for item in queue])
-            print('Probability:',call_probability())
 
             try:
                 if random() < call_probability():
                     result = func(*args, **kwargs)
 
                     remember_call(current_time)
+                else:
+                    print('Skip function call')
             except Exception:
                 remember_call(current_time, False)
 
