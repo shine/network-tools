@@ -1,3 +1,5 @@
+"""Module providing a call limiting functionality in form of decorator."""
+
 import time
 from collections import deque
 from functools import wraps

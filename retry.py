@@ -1,3 +1,5 @@
+"""Module providing a function call retry functionality in form of decorator."""
+
 from random import random
 from functools import wraps
 import time

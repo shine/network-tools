@@ -1,3 +1,5 @@
+"""Module providing a timeout (single threaded) functionality in form of decorator."""
+
 import errno
 import os
 import signal
