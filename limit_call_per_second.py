@@ -41,15 +41,3 @@ def limit_calls(number_of_calls: int=10, control_period: int=1):
         return inner
 
     return wrapper
-
-@limit_calls(number_of_calls=3, control_period=1)
-def request_something_from_api(url, timeout):
-    print(f'Call: {url} and {timeout}')
-
-for _ in range(5):
-    request_something_from_api('https://google.com', 20)
-
-time.sleep(1)
-
-for _ in range(5):
-    request_something_from_api('https://bing.com', 10)

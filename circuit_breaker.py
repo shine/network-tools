@@ -62,22 +62,3 @@ def circuit_breaker(history_size: int=5, forget_after: int=3):
 
         return inner_function
     return wrapper
-
-
-@circuit_breaker()
-def random_exception(val: int, probability: float):
-    """ Just a method that fails randomely """
-    if random() < probability:
-        raise ValueError('Bad luck')
-    return val
-
-
-for index in range(30):
-    print(random_exception(index, 0.9))
-    time.sleep(0.3)
-
-print('Functionality was fixed!')
-
-for index in range(30):
-    print(random_exception(index, 0.05))
-    time.sleep(0.3)

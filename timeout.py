@@ -4,16 +4,14 @@ import errno
 import os
 import signal
 import functools
-import time
 
 def timeout(seconds=10, error_message=os.strerror(errno.ETIME)):
     """
     Decorator function that adds a timeout to the decorated function.
 
     Args:
-        seconds (int, optional): The number of seconds after which the function should timeout. Defaults to 10.
-        error_message (str, optional): The error message to raise if the function times out. Defaults to the system-specific error message for ETIME.
-
+        seconds (int, optional): The number of seconds after which the function should timeout.
+        error_message (str, optional): The error message to raise if the function times out.
     Returns:
         function: The decorated function with a timeout added.
 
@@ -46,9 +44,3 @@ def timeout(seconds=10, error_message=os.strerror(errno.ETIME)):
             return result
         return wrapper
     return decorator
-
-@timeout(seconds=3)
-def long_running_function():
-    time.sleep(2)
-
-long_running_function()
